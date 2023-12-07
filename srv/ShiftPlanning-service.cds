@@ -11,5 +11,12 @@ service ShifPlan @(path : '/shiftplanning') {
              userId
         };
 
+    // @readonly
+    // entity SFSF_Specific_Manager_Employees as
+    //     select from ECEI_API.EmpJob {
+    //          userId
+    //     };
+
     annotate SFSF_Manager with @(cds.odata.valuelist);
+    // annotate SFSF_Specific_Manager_Employees with @(cds.odata.valuelist);
 }
