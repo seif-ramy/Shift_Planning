@@ -27,6 +27,14 @@
           "destination": "SFSF",
           "path": "/odata/v2/EmpJob"
         }
+      },
+      "PLTUserManagement": {
+        "kind": "odata-v2",
+        "model": "srv/external/PLTUserManagement",
+        "credentials": {
+          "destination": "SFSF",
+          "path": "/odata/v2/User"
+        }
       }
     }
   }
