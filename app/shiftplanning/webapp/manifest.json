@@ -57,7 +57,8 @@
         "sap.ui.table": {},
         "sap.ushell": {},
         "sap.suite.ui.microchart": {},
-        "sap.ui.layout": {}
+        "sap.ui.layout": {},
+        "sap.ui.unified": {}
       }
     },
     "contentDensities": {
@@ -77,7 +78,7 @@
         "settings": {
           "synchronizationMode": "None",
           "operationMode": "Server",
-          "autoExpandSelect": true,
+          "autoExpandSelect": false,
           "earlyRequests": true
         }
       }
