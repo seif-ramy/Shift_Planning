@@ -6,17 +6,19 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap-cloud-sdk/http-client": "^3.8.1",
+    "@sap-cloud-sdk/http-client": "^3.9.0",
     "@sap-cloud-sdk/resilience": "^3.8.1",
     "@sap/cds": "^7",
     "cds": "^0.2.0",
     "express": "^4"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^1"
+    "@cap-js/sqlite": "^1",
+    "@sap/ux-specification": "^1.120.0"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-shiftplanning": "cds watch --open shiftplanning/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "requires": {
@@ -37,5 +39,8 @@
         }
       }
     }
-  }
+  },
+  "sapux": [
+    "app/shiftplanning"
+  ]
 }
