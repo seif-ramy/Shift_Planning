@@ -27,14 +27,12 @@
 						text="{department}"
                         >
 					<appointments>
-						<unified:CalendarAppointment id="_IDGenCalendarAppointment1"
-								startDate="09-12-2023"
-								endDate="19-12-2023"
+						<!-- <unified:CalendarAppointment id="_IDGenCalendarAppointment1"
 								title="{title}"
 								text="{division}"
 								type="{department}"
 								tentative="{username}">
-						</unified:CalendarAppointment>
+						</unified:CalendarAppointment> -->
 					</appointments>
 				</PlanningCalendarRow>
 			</rows>
