@@ -56,7 +56,7 @@ async function readSFSF_Manager(req) {
         }
         
         userIDs = sf_managers_array.map(user => user.userId);
-        console.log(userIDs);
+        //console.log(userIDs);
         return sf_managers_array
        
     } catch (err) {
@@ -74,7 +74,7 @@ async function readSFSF_User(req) {
         const tx = userService.tx(req);
         req.query.where({ userId: { in: userIDs}});
         let array = await tx.run(req.query);
-        console.log(array);
+        //console.log(array);
         return await tx.run(req.query);
         
     } catch (err) {
