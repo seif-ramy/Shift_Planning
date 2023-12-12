@@ -1,0 +1,1 @@
+using shift.planning.service.ShifPlan as service from '../../srv/ShiftPlanning-service';

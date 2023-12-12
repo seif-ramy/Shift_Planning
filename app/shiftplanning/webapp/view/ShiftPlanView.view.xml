@@ -1,0 +1,43 @@
+<mvc:View controllerName="sp.shiftplanning.controller.ShiftPlanView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
+    <PlanningCalendar id="PCID"
+				rows="{path: '/SFSF_User'}"
+				appointmentsVisualization="Filled" >			
+                <toolbarContent>
+				<Title id="_IDGenTitle1" text="Title" titleStyle="H4"/>
+				<Label id="_IDGenLabel1" text="Logged in as" />
+				<!-- <Select
+						id="userRole"
+						change="handleRoleChange"
+						selectedKey="admin"
+						width="230px">
+					<items>
+						<core:Item id="_IDGenItem1" key="admin" text="Admin" />
+						<core:Item id="_IDGenItem2" key="manager" text="Manager" />
+						<core:Item id="_IDGenItem3" key="donna" text="Donna Moore" />
+					</items>
+				</Select> -->
+			</toolbarContent>
+            <rows>
+				<PlanningCalendarRow id="_IDGenPlanningCalendarRow1"
+						icon=""
+						title="{title}"
+						text="{department}"
+                        >
+					<appointments>
+						<unified:CalendarAppointment id="_IDGenCalendarAppointment1"
+								startDate="09-12-2023"
+								endDate="19-12-2023"
+								title="{title}"
+								text="{division}"
+								type="{department}"
+								tentative="{username}">
+						</unified:CalendarAppointment>
+					</appointments>
+				</PlanningCalendarRow>
+			</rows>
+                </PlanningCalendar>
+    </VBox>
+</mvc:View>
