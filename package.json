@@ -26,7 +26,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ECEmploymentInformation",
         "credentials": {
-          "destination": "Raptors_SF",
+          "destination": "SFSF",
           "path": "/odata/v2/EmpJob"
         }
       },
@@ -34,17 +34,13 @@
         "kind": "odata-v2",
         "model": "srv/external/PLTUserManagement",
         "credentials": {
-          "destination": "Raptors_SF",
+          "destination": "SFSF",
           "path": "/odata/v2/User"
         }
       },
       "photo": {
         "kind": "odata-v2",
-        "model": "srv/external/photo",
-        "credentials": {
-          "destination": "Raptors_SF",
-          "path": "/odata/v2/Photo"
-        }
+        "model": "srv/external/photo"
       }
     }
   },
