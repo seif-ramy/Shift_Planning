@@ -1,0 +1,183 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.4.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "photo": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true"
+    },
+    "photo.Photo": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.label": "Photo",
+      "@sap.creatable": "true",
+      "@sap.updatable": "true",
+      "@sap.upsertable": "true",
+      "@sap.deletable": "true",
+      "elements": {
+        "photoType": {
+          "key": true,
+          "type": "cds.Integer",
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "photoType",
+          "notNull": true
+        },
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100,
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "userId",
+          "notNull": true
+        },
+        "height": {
+          "type": "cds.Integer",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "height",
+          "notNull": true
+        },
+        "lastModified": {
+          "type": "cds.Date",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.display.format": "Date",
+          "@sap.label": "lastModified"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedDateTime"
+        },
+        "lastModifiedWithTZ": {
+          "type": "cds.DateTime",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "lastModifiedWithTZ"
+        },
+        "mimeType": {
+          "type": "cds.String",
+          "length": 32,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "mimeType"
+        },
+        "personUUID": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "true",
+          "@sap.label": "personUUID"
+        },
+        "photo": {
+          "type": "cds.LargeBinary",
+          "@sap.required": "true",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.label": "photo"
+        },
+        "photoHash": {
+          "type": "cds.String",
+          "length": 64,
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "false",
+          "@sap.filterable": "true",
+          "@sap.label": "photoHash"
+        },
+        "photoId": {
+          "type": "cds.Integer64",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "photoId",
+          "notNull": true
+        },
+        "photoName": {
+          "type": "cds.String",
+          "length": 128,
+          "@sap.required": "false",
+          "@sap.creatable": "true",
+          "@sap.updatable": "true",
+          "@sap.upsertable": "true",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "photoName"
+        },
+        "width": {
+          "type": "cds.Integer",
+          "@sap.required": "false",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.upsertable": "false",
+          "@sap.visible": "true",
+          "@sap.sortable": "true",
+          "@sap.filterable": "true",
+          "@sap.label": "width",
+          "notNull": true
+        }
+      }
+    }
+  }
+}
