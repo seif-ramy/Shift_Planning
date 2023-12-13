@@ -76,7 +76,7 @@ async function readSFSF_User(req) {
         const tx = userService.tx(req);
         req.query.where({ userId: { in: userIDs}});
         let array = await tx.run(req.query);
-        //console.log(array);
+        console.log(array);
         return await tx.run(req.query);
         
     } catch (err) {
