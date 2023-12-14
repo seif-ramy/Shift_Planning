@@ -4,7 +4,7 @@ using photo as photos_API from '../srv/external/photo.csn';
 
 namespace shift.planning.service;
 
-service ShifPlan @(path : '/shiftplanning') {
+service ShifPlan @(path : '/shiftplanning',requires:'authenticated-user') {
     
     @readonly
     entity SFSF_Manager as
