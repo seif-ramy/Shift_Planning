@@ -1,20 +1,25 @@
 <mvc:View controllerName="sp.shiftplanning.controller.ShiftPlanView"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
+	xmlns:f="sap.f"
 	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt"
 	xmlns:unified="sap.ui.unified">
-    <VBox id="_IDGenVBox1" class="sapUiSmallMargin">
-	<!-- startDate="{path: '/startDate'}"
-	rows="{path: '/people'}" -->
-    <PlanningCalendar id="PCID"
+			<Page id="_IDGenPage1">
+		<content>
+    <HBox id="_IDGenHBox1" class="sapUiSmallMargin">
+	<PlanningCalendar id="PCID"
 	singleSelection="false"
 			showIntervalHeaders="false"
 			
 				rows="{path: '/SFSF_Manager'}"
 				appointmentsVisualization="Filled" 
+				showWeekNumbers="true" 
+			    showEmptyIntervalHeaders="false"
+				stickyHeader="true"
 				>			
                 <toolbarContent>
-				<Title id="_IDGenTitle1" text="Title" titleStyle="H4"/>
+				<Title id="_IDGenTitle1" text="Raptors Shift Planning" titleStyle="H4"/>
 				<!-- <Label id="_IDGenLabel1" text="Logged in as" />  -->
 				<!-- <Select
 						id="userRole"
@@ -41,7 +46,6 @@
 							endDate="{end}" -->
 						<unified:CalendarAppointment id="_IDGenCalendarAppointment1"
 						
-								title="{title}"
 								text="{division}"
 								type="{department}"
 							tentative="{tentative}"
@@ -51,5 +55,34 @@
 				</PlanningCalendarRow>
 			</rows>
                 </PlanningCalendar>
-    </VBox>
+
+
+ <!-- Side Navigation -->
+ <f:SidePanel id="mySidePanel" toggle="onToggle">
+ <f:items>
+	<f:SidePanelItem id="_IDGenSidePanelItem1" icon="sap-icon://physical-activity" text="Run">
+						<VBox id="_IDGenVBox1">
+							<Text id="_IDGenText1" text="Static Content" class="sapUiSmallMarginBottom" />
+							<Text id="_IDGenText2" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+							<Switch id="_IDGenSwitch1" />
+							<Button id="_IDGenButton1" text="Press me" />
+						</VBox>
+					</f:SidePanelItem>
+					<f:SidePanelItem id="_IDGenSidePanelItem2" icon="sap-icon://addresses" text="Go home">
+						<VBox id="_IDGenVBox2">
+							<Text id="_IDGenText3" text="Static Content" class="sapUiSmallMarginBottom" />
+							<Button id="_IDGenButton2" text="Press me" />
+							<Button id="_IDGenButton3" text="Hit me" />
+							<Button id="_IDGenButton4" text="Touch me" />
+						</VBox>
+					</f:SidePanelItem>
+					<f:SidePanelItem id="_IDGenSidePanelItem3" icon="sap-icon://building" text="Go to office" />
+					<f:SidePanelItem id="_IDGenSidePanelItem4" icon="sap-icon://flight" text="Fly abroad" enabled="false" />
+				</f:items>
+			</f:SidePanel>
+    </HBox>
+
+			</content>
+	</Page>
+
 </mvc:View>
