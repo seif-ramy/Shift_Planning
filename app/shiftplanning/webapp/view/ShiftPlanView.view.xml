@@ -31,9 +31,9 @@
             <rows>
 			<!-- appointments="{path : 'appointments', templateShareable: false}" -->
 				<PlanningCalendarRow id="_IDGenPlanningCalendarRow1"
-						icon=""
-						title="{title}"
-						text="{department}"
+						icon="data:{mimeType};base64,{photo}"
+						title="{userId}"
+						text="{defaultFullName}"
 						
                         >
 					<appointments>
