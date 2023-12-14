@@ -10,7 +10,12 @@ service ShifPlan @(path : '/shiftplanning',requires:'authenticated-user') {
     entity SFSF_Manager as
         select from ECEI_API.EmpJob {
              managerId,
-             userId
+             userId,
+             '' as defaultFullName:String,
+             '' as email:String,
+             '' as division:String,
+             '' as department:String,
+             '' as title:String
         };
 
     @readonly

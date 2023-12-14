@@ -10,7 +10,7 @@
 	singleSelection="false"
 			showIntervalHeaders="false"
 			
-				rows="{path: '/SFSF_User'}"
+				rows="{path: '/SFSF_Manager'}"
 				appointmentsVisualization="Filled" 
 				>			
                 <toolbarContent>

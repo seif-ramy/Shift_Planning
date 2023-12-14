@@ -44,16 +44,16 @@ function removeColumnsFromOrderBy(query, columnNames) {
 
 //Get manager id from manager user name and return this manager id
  async function getManagerId(managerUserName) {
-    console.log(managerUserName);
+    // console.log(managerUserName);
 
     let selectStatement = "$select=userId";
-    console.log(selectStatement);
+    // console.log(selectStatement);
 
     const whereClause = `username eq '${managerUserName}'`;
-    console.log(whereClause);
+    // console.log(whereClause);
 
     let urlPath = `?${selectStatement}&$filter=${whereClause}`;
-    console.log(urlPath);
+    // console.log(urlPath);
 
     try {
         let managerId = await userService.send({
@@ -62,13 +62,13 @@ function removeColumnsFromOrderBy(query, columnNames) {
         });
 
         if (managerId.length > 0) {
-            console.log("Success");
-            console.log(managerId);
+            // console.log("Success");
+            // console.log(managerId);
             const managerId_int = parseInt(managerId[0].userId, 10);
-            console.log(managerId_int);
+            // console.log(managerId_int);
             return managerId_int;
         } else {
-            console.log("Fail");
+            // console.log("Fail");
             return undefined; // or handle the absence of managerId as needed
         }
     } catch (error) {
@@ -82,7 +82,7 @@ async function readSFSF_Manager(req) {
     try {
         // Handover to the SF OData Service to fetch the requested data
         const dynamicManagerId = await getManagerId(req.user.id); // Use await here
-        console.log(dynamicManagerId);
+        // console.log(dynamicManagerId);
         if(dynamicManagerId==undefined){
             return;
         }
@@ -99,7 +99,30 @@ async function readSFSF_Manager(req) {
         }
 
         userIDs = sf_managers_array.map((user) => user.userId);
-        return sf_managers_array;
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       let selectStatement = "$select=userId,username,defaultFullName,email,division,department,title";
+       console.log(selectStatement);
+
+       const whereClause = userIDs.map((valObj) => `userId eq ${valObj}`).join(" or ");
+       console.log(whereClause);
+
+       let urlPath = `?${selectStatement}&$filter=${whereClause}`;
+       console.log(urlPath);
+    
+       let users = await userService.send({
+        method: "GET",
+        path: urlPath
+    });
+
+    if (users.length > 0) {
+        console.log("Success");
+        console.log(users);
+    } else {
+        console.log("Fail");
+    }
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        return users;
     } catch (err) {
         req.error(err.code, err.message);
     }
