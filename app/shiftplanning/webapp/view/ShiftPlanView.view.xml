@@ -11,9 +11,12 @@
 	<PlanningCalendar id="PCID"
 	singleSelection="false"
 			showIntervalHeaders="false"
-			
+			builtInViews="One Month"
 				rows="{path: '/SFSF_User'}"
 				appointmentsVisualization="Filled" 
+				showWeekNumbers="true" 
+			    showEmptyIntervalHeaders="false"
+				stickyHeader="true"
 				>			
                 <toolbarContent>
 				<Title id="_IDGenTitle1" text="Raptors Shift Planning" titleStyle="H4"/>
@@ -43,7 +46,6 @@
 							endDate="{end}" -->
 						<unified:CalendarAppointment id="_IDGenCalendarAppointment1"
 						
-								title="{title}"
 								text="{division}"
 								type="{department}"
 							tentative="{tentative}"
