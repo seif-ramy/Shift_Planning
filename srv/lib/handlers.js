@@ -42,27 +42,64 @@ function removeColumnsFromOrderBy(query, columnNames) {
 
 /*** HANDLERS ***/
 
+//Get manager id from manager user name and return this manager id
+ async function getManagerId(managerUserName) {
+    console.log(managerUserName);
+
+    let selectStatement = "$select=userId";
+    console.log(selectStatement);
+
+    const whereClause = `username eq '${managerUserName}'`;
+    console.log(whereClause);
+
+    let urlPath = `?${selectStatement}&$filter=${whereClause}`;
+    console.log(urlPath);
+
+    try {
+        let managerId = await userService.send({
+            method: "GET",
+            path: urlPath
+        });
+
+        if (managerId.length > 0) {
+            console.log("Success");
+            console.log(managerId);
+            const managerId_int = parseInt(managerId[0].userId, 10);
+            console.log(managerId_int);
+            return managerId_int;
+        } else {
+            console.log("Fail");
+            return undefined; // or handle the absence of managerId as needed
+        }
+    } catch (error) {
+        console.error("Error fetching managerId:", error);
+        return undefined; // or handle the error as needed
+    }
+}
+
 // Read Managers
 async function readSFSF_Manager(req) {
     try {
-        // Handover to the SF OData Service to fecth the requested data
-        // const managerUserName= req.user.id;
+        // Handover to the SF OData Service to fetch the requested data
+        const dynamicManagerId = await getManagerId(req.user.id); // Use await here
+        console.log(dynamicManagerId);
+        if(dynamicManagerId==undefined){
+            return;
+        }
+
         const tx = managerService.tx(req);
-        req.query.where({ managerId:"10021"})
+        req.query.where({ managerId: dynamicManagerId });
+
         let sf_managers = await tx.run(req.query);
 
+        if (Array.isArray(sf_managers)) {
+            sf_managers_array = sf_managers;
+        } else {
+            sf_managers_array[0] = sf_managers;
+        }
 
-        
-        if (Array.isArray(sf_managers)){
-            sf_managers_array = sf_managers
-        }
-        else {
-            sf_managers_array[0] = sf_managers
-        }
-        
-        userIDs = sf_managers_array.map(user => user.userId);
-        return sf_managers_array
-       
+        userIDs = sf_managers_array.map((user) => user.userId);
+        return sf_managers_array;
     } catch (err) {
         req.error(err.code, err.message);
     }
