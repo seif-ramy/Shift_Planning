@@ -46,9 +46,12 @@ function removeColumnsFromOrderBy(query, columnNames) {
 async function readSFSF_Manager(req) {
     try {
         // Handover to the SF OData Service to fecth the requested data
+        // const managerUserName= req.user.id;
         const tx = managerService.tx(req);
         req.query.where({ managerId:"10021"})
         let sf_managers = await tx.run(req.query);
+
+
         
         if (Array.isArray(sf_managers)){
             sf_managers_array = sf_managers
@@ -58,27 +61,8 @@ async function readSFSF_Manager(req) {
         }
         
         userIDs = sf_managers_array.map(user => user.userId);
-        //console.log(userIDs);
         return sf_managers_array
        
-    } catch (err) {
-        req.error(err.code, err.message);
-    }
-}
-
-// Read SFSF users
-async function readSFSF_User(req) {
-    try {
-        // Columns that are not sortable must be removed from "order by"
-        req.query = removeColumnsFromOrderBy(req.query, ['defaultFullName']);
-
-        // Handover to the SF OData Service to fecth the requested data
-        const tx = userService.tx(req);
-        req.query.where({ userId: { in: userIDs}});
-        let array = await tx.run(req.query);
-        console.log(array);
-        return await tx.run(req.query);
-        
     } catch (err) {
         req.error(err.code, err.message);
     }
@@ -142,6 +126,6 @@ async function readSFSF_User(req) {
 
 module.exports = {
     readSFSF_Manager,
-    readSFSF_User,
-    readSFSF_User_Photo
+    readSFSF_User_Photo,
+    readSFSF_User
 }
