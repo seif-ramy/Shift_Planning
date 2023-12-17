@@ -17,16 +17,13 @@ let dayModelsService=null;
 
 //Get manager id from manager user name and return this manager id
  async function getManagerId(managerUserName) {
-    // console.log(managerUserName);
+    
 
     let selectStatement = "$select=userId";
-    // console.log(selectStatement);
 
     const whereClause = `tolower(username) eq '${managerUserName.toLowerCase()}'`;
-    // console.log(whereClause);
 
     let urlPath = `?${selectStatement}&$filter=${whereClause}`;
-    // console.log(urlPath);
 
     try {
         let managerId = await userService.send({
@@ -35,18 +32,14 @@ let dayModelsService=null;
         });
 
         if (managerId.length > 0) {
-            // console.log("Success");
-            // console.log(managerId);
             const managerId_int = parseInt(managerId[0].userId, 10);
-            // console.log(managerId_int);
             return managerId_int;
         } else {
-            // console.log("Fail");
-            return undefined; // or handle the absence of managerId as needed
+            return undefined; 
         }
     } catch (error) {
         console.error("Error fetching managerId:", error);
-        return undefined; // or handle the error as needed
+        return undefined; 
     }
 }
 
