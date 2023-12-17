@@ -15,33 +15,10 @@ service ShifPlan @(path : '/shiftplanning',requires:'authenticated-user') {
              '' as email:String,
              '' as division:String,
              '' as department:String,
-             '' as title:String
+             '' as title:String,
+             '' as photo:String,
+             '' as mimeType:String
         };
-
-    @readonly
-    entity user_photo as projection on photos_API.Photo{
-    key userId,
-    photo,
-    mimeType
-};
-
-
-@readonly
-entity SFSF_User as
-    select from UM_API.User {
-        key userId,
-        username,
-        defaultFullName,
-        email,
-        division,
-        department,
-        title,
-        '' as photo:String,
-        '' as mimeType:String,
-    };
-
-
-
+        
     annotate SFSF_Manager with @(cds.odata.valuelist);
-    annotate SFSF_User with @(cds.odata.valuelist);
 }
