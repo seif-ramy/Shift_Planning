@@ -3,12 +3,14 @@ const cds = require('@sap/cds');
 let managerService = null;
 let userService = null;
 let userPhotoService = null;
+let dayModelsService=null;
 
 (async function () {
     // Connect to external SFSF OData services
     managerService = await cds.connect.to('ECEmploymentInformation');
     userService = await cds.connect.to('PLTUserManagement');
     userPhotoService = await cds.connect.to('photo');
+    dayModelsService = await cds.connect.to('ECTimeOff');
 })();
 
 /*** HANDLERS ***/
@@ -127,6 +129,35 @@ async function readSFSF_Manager(req) {
     }
 }
 
+async function getDayModels(req) {
+    try {
+        const selectQuery = '$select=dayModel';
+        const filterQuery = '$filter=dayModel ne null';
+        const urlPathQuery = `?${selectQuery}&${filterQuery}`;
+
+        //get all available day models with duplicates
+        let dayModelsResponse = await dayModelsService.send({
+            method: "GET",
+            path: urlPathQuery,
+        });
+
+        // Select distinct dayModel values directly from the response using reduce
+        const distinctDayModels = dayModelsResponse.reduce((accumulator, item) => {
+            if (!accumulator.some(entry => entry.dayModel === item.dayModel)) {
+                accumulator.push({ dayModel: item.dayModel });
+            }
+            return accumulator;
+        }, []);
+
+        return distinctDayModels;
+    
+    } catch (error) {
+        console.error('Error fetching and processing day models:', error);
+        throw error;
+    }
+}
+
 module.exports = {
-    readSFSF_Manager
+    readSFSF_Manager,
+    getDayModels
 }

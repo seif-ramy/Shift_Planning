@@ -45,6 +45,14 @@
           "destination": "Raptors_SF",
           "path": "/odata/v2/Photo"
         }
+      },
+      "ECTimeOff": {
+        "kind": "odata-v2",
+        "model": "srv/external/ECTimeOff",
+        "credentials": {
+          "destination": "Raptors_SF",
+          "path": "/odata/v2/WorkScheduleDayModelAssignment"
+        }
       }
     }
   },
